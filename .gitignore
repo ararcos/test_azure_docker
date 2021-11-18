@@ -1,0 +1,52 @@
+# Python
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+
+# scrapy
+.scrapy
+
+# vs code
+.vscode
+.vs
+.trash
+
+# Jetbrans IDEs
+.idea
+
+# virtual environments
+.venv
+
+# Dependency directories
+node_modules
+
+# Serverless directories
+.serverless/
+
+# Files generated for development
+.env
+timetracker-api-postman-collection.json
+swagger.json
+
+# SQLite databases
+*.db
+
+# Local migration files
+migration_status.csv
+
+# Mac
+.DS_Store
+
+# windows env variables
+env.*
+
+# SSL certificate for cosmos emulator
+emulatorcert.crt
+
+seed_database.json

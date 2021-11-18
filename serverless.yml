@@ -1,0 +1,79 @@
+service: azure-time-tracker-prueba
+
+frameworkVersion: "2"
+
+provider:
+  name: azure
+  region: westus2
+  runtime: python3.8
+  os: linux
+  subscriptionId: f775be70-3fd5-4148-88ea-c78a2ad15f00
+  resourceGroup: time-tracker-wus2-dev-nodejs-functions-rg
+  stage: dev
+  functionApp:
+    name: sls-time-tracker-prueba
+
+  appInsights:
+    name: sls-time-tracker-ai
+
+  storageAccount:
+    name: slstimetrackerprueba
+
+plugins:
+  - serverless-azure-functions
+
+package:
+  patterns:
+    - "!env/**"
+    - "!.env/**"
+    - "!local.settings.json"
+    - "!.vscode/**"
+    - "!__pycache__/**"
+    - "!node_modules/**"
+    - "!.python_packages/**"
+    - "!.funcignore"
+    - "!package.json"
+    - "!package-lock.json"
+    - "!.gitignore"
+    - "!.git/**"
+
+functions:
+  get_activities:
+    handler: time_entries/interface.get_activities
+    events:
+      - http: true
+        x-azure-settings:
+          methods:
+            - GET
+          route: activities/{id:?}
+          authLevel: anonymous
+
+  delete_activity:
+    handler: time_entries/interface.delete_activity
+    events:
+      - http: true
+        x-azure-settings:
+          methods:
+            - DELETE
+          route: activities/{id}
+          authLevel: anonymous
+
+  update_activity:
+    handler: time_entries/interface.update_activity
+    events:
+      - http: true
+        x-azure-settings:
+          methods:
+            - PUT   
+          route: activities/{id}
+          authLevel: anonymous    
+
+  create_activity:
+    handler: time_entries/interface.create_activity
+    events:
+      - http: true
+        x-azure-settings:
+          methods:
+            - POST
+          route: activities/
+          authLevel: anonymous
