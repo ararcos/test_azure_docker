@@ -39,7 +39,7 @@ package:
 
 functions:
   get_activities:
-    handler: time_entries/interface.get_activities
+    handler: time_tracker/activities/interface.get_activities
     events:
       - http: true
         x-azure-settings:
@@ -49,7 +49,7 @@ functions:
           authLevel: anonymous
 
   delete_activity:
-    handler: time_entries/interface.delete_activity
+    handler: time_tracker/activities/interface.delete_activity
     events:
       - http: true
         x-azure-settings:
@@ -59,7 +59,7 @@ functions:
           authLevel: anonymous
 
   update_activity:
-    handler: time_entries/interface.update_activity
+    handler: time_tracker/activities/interface.update_activity
     events:
       - http: true
         x-azure-settings:
@@ -69,7 +69,7 @@ functions:
           authLevel: anonymous    
 
   create_activity:
-    handler: time_entries/interface.create_activity
+    handler: time_tracker/activities/interface.create_activity
     events:
       - http: true
         x-azure-settings:

@@ -4,6 +4,8 @@ azure-functions-worker
 
 # Tests
 pytest
+flake8
+dataclasses
 
 # Mocking
 pytest-mock
@@ -11,4 +13,6 @@ pytest-mock
 # To create sample content in tests and API documentation
 Faker==4.0.2
 
-dataclasses==0.6
+#SQL ALCHEMY
+SQLAlchemy==1.4.24
+psycopg2-binary

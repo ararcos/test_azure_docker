@@ -1,4 +1,4 @@
-from time_entries._domain import ActivityService
+from time_tracker.activities._domain import ActivityService
 from faker import Faker
 
 
@@ -53,20 +53,21 @@ def test__update_activity__uses_the_activity_dao__to_update_one_activity(
     activity_service = ActivityService(activity_dao)
 
     updated_activity = activity_service.update(
-        Faker().uuid4(), Faker().pydict()
+        Faker().uuid4(), Faker().name(), Faker().sentence(), Faker().pyint(), Faker().pybool()
     )
 
     assert activity_dao.update.called
     assert expected_activity == updated_activity
 
+
 def test__create_activity__uses_the_activity_dao__to_create_an_activity(mocker):
     expected_activity = mocker.Mock()
     activity_dao = mocker.Mock(
-        create_activity=mocker.Mock(return_value=expected_activity)
+        create=mocker.Mock(return_value=expected_activity)
     )
     activity_service = ActivityService(activity_dao)
 
-    actual_activity = activity_service.create_activity(Faker().pydict())
+    actual_activity = activity_service.create(Faker().pydict())
 
-    assert activity_dao.create_activity.called
+    assert activity_dao.create.called
     assert expected_activity == actual_activity
