@@ -36,6 +36,8 @@ package:
     - "!package-lock.json"
     - "!.gitignore"
     - "!.git/**"
+    - "!.venv/**"
+    - "!.pytest_cache/**"
 
 functions:
   get_activities:
@@ -77,3 +79,5 @@ functions:
             - POST
           route: activities/
           authLevel: anonymous
+
+
