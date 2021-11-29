@@ -25,12 +25,11 @@ test:
 		@echo "=========================================Test with pytest========================================="
 		python -m pytest -v
 		@echo "Completed test!"
-
-start-local:
-		docker compose up
 	
 .PHONY: ci
 ci: 	install test
+
+
 
 .PHONY: install-docker
 install-docker:
@@ -38,3 +37,11 @@ install-docker:
 		pip install --upgrade pip
 		pip install -r requirements.txt
 		@echo "Completed! "
+
+start-local:
+		docker compose up
+
+deploy:
+		sls package
+		docker compose up --build
+
